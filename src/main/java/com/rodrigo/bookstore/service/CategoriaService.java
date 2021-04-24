@@ -41,4 +41,9 @@ public class CategoriaService {
 		return this.categoriaRepository.save(obj);
 	}
 
+	public void delete(Long id) {
+		this.findById(id);		
+		this.categoriaRepository.deleteById(id);
+	}
+
 }
