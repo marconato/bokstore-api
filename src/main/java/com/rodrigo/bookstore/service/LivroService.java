@@ -38,12 +38,16 @@ public class LivroService {
 		return this.livroRepository.save(obj);
 	}
 
-	public Livro update(Long id, LivroDTO objDto) {
-		Livro obj = findById(id);
-		obj.setNome_autor(objDto.getNome_autor());
-		obj.setTitulo(objDto.getTitulo());
-
+	public Livro update(Long id, Livro obj) {
+		Livro newObj = findById(id);
+		this.updateData(newObj, obj);
 		return this.livroRepository.save(obj);
+	}
+	
+	private void updateData(Livro newObj, Livro obj) {
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setNome_autor(obj.getNome_autor());
+		newObj.setTexto(obj.getTexto());
 	}
 
 	public void delete(Long id) {
