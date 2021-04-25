@@ -56,13 +56,7 @@ public class LivroService {
 
 	public void delete(Long id) {
 		this.findById(id);
-		try {
-			this.livroRepository.deleteById(id);
-		} catch (DataIntegrityViolationException e) {
-			throw new com.rodrigo.bookstore.service.exceptions.DataIntegrityViolationException(
-					"Livro não pode ser deletado! Possui livros associados");
-		}
-
+		this.livroRepository.deleteById(id);
 	}
 
 }
