@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.rodrigo.bookstore.domain.Categoria;
 import com.rodrigo.bookstore.domain.Livro;
 import com.rodrigo.bookstore.dtos.LivroDTO;
 import com.rodrigo.bookstore.repositories.LivroRepository;
@@ -33,8 +34,11 @@ public class LivroService {
 		return livroRepository.findAllByCategoria(categoriaId);
 	}
 
-	public Livro create(Livro obj) {
+	public Livro create(Long categoriaId, Livro obj) {
+		
 		obj.setId(null);
+		Categoria cat = this.categoriaService.findById(categoriaId);
+		obj.setCategoria(cat);
 		return this.livroRepository.save(obj);
 	}
 
