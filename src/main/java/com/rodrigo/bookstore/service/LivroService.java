@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.rodrigo.bookstore.domain.Categoria;
 import com.rodrigo.bookstore.domain.Livro;
-import com.rodrigo.bookstore.dtos.LivroDTO;
 import com.rodrigo.bookstore.repositories.LivroRepository;
 import com.rodrigo.bookstore.service.exceptions.ObjectNotFoundException;
 
@@ -34,8 +32,7 @@ public class LivroService {
 		return livroRepository.findAllByCategoria(categoriaId);
 	}
 
-	public Livro create(Long categoriaId, Livro obj) {
-		
+	public Livro create(Long categoriaId, Livro obj) {		
 		obj.setId(null);
 		Categoria cat = this.categoriaService.findById(categoriaId);
 		obj.setCategoria(cat);
@@ -45,7 +42,7 @@ public class LivroService {
 	public Livro update(Long id, Livro obj) {
 		Livro newObj = findById(id);
 		this.updateData(newObj, obj);
-		return this.livroRepository.save(obj);
+		return this.livroRepository.save(newObj);
 	}
 	
 	private void updateData(Livro newObj, Livro obj) {
