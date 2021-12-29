@@ -6,3 +6,7 @@ Projeto backend Java com Spring Boot para implentar o curso Angular 11 + Spring 
 https://www.udemy.com/course/angular-10-spring-boot-com-deploy-no-heroku-e-github-pages/
 
 O projeto consiste na criação de dois casos de uso para compor a lógica de negócio de uma livraria.
+
+
+# Acessando a aplicação
+Para acessar a aplicação use o seguinte endereço: https://marconato.github.io/
